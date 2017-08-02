@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.params=size
+comment0.target=GraphAM(int)
+comment1.params=
+comment1.target=int[][]\ getEdges()
+comment2.params=source\ destination
+comment2.target=int\ getWeight(int,\ int)
+comment3.params=source\ destination\ weight
+comment3.target=void\ addArc(int,\ int,\ int)
+comment4.params=vertex
+comment4.target=java.util.ArrayList\ getSuccessors(int)
+numComments=5
