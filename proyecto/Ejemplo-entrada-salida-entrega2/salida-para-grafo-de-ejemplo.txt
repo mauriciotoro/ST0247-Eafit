@@ -1,0 +1,11 @@
+// Ejemplo para entregar domicilios en School, Snell's Farm, Gym. El punto de inicio y de fin es School.
+// 2.1421213,0.143434395, School
+// 5.1421214,2.143334395, Snell's Farm
+// 0.1421215,2.145434395, Gym
+// 2.1421213,0.143434395, School
+// La salida sería este URL:
+
+https://www.google.es/maps/dir/2.1421213,0.143434395/5.1421214,2.143334395/0.1421215,2.145434395/2.1421213,0.143434395/@2.1421213,0.143434395
+
+// E imprimir por ahí la distancia total que sería 49.
+

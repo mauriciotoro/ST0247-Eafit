@@ -1,0 +1,16 @@
+Profe, las 2 generarizaciones del Traveling Salesman Problem son:
+
+
+Traveling Purchaser Problem, es como que tienes hay varios vertices y en cada uno puedes vender y comprar cosas, entonces debes hacer el recorrido que te genere mas ingresos y se puede repetir o no visitar nodos.
+
+https://en.wikipedia.org/wiki/Traveling_purchaser_problem
+
+
+Vehicle Routing Problem, que es como el TSP pero pueden salir varios "autos" de un vertice y todos deben volver a el.
+
+https://en.wikipedia.org/wiki/Vehicle_routing_problem
+
+
+Y el paper acerca del TSP es:
+
+http://cms.dm.uba.ar/academico/carreras/licenciatura/tesis/2011/Stockdale_Lorena.pdf
