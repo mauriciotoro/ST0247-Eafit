@@ -7,10 +7,6 @@ import java.util.ArrayList;
  */
 public class Taller2 {
 
-	public static boolean sumaGrupo(int start, int[] nums, int target) {
-		// complete...
-	}
-
 	public static ArrayList<String> combinations(String s) {
 		// complete...
 	}

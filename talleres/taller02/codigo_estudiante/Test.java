@@ -12,41 +12,13 @@ import java.util.TreeSet;
 public class Test {
 
 	public static void main(String[] args) {
-		System.out.println("sumaGrupo -> " + convert(testSumaGrupo()));
+		
 		System.out.println("combinations -> " + convert(testCombinations()));
 		System.out.println("permutations -> " + convert(testPermutations()));
 		System.out.println("n-reinas -> " + convert(testNQueens()));
 	}
 
-	static boolean testSumaGrupo() {
-		if (Taller2.sumaGrupo(0, new int[] { 2, 4, 8 }, 10) != true)
-			return false;
-		if (Taller2.sumaGrupo(0, new int[] { 2, 4, 8 }, 14) != true)
-			return false;
-		if (Taller2.sumaGrupo(0, new int[] { 2, 4, 8 }, 20) != false)
-			return false;
-		if (Taller2.sumaGrupo(0, new int[] { 2, 4, 8 }, 9) != false)
-			return false;
-		if (Taller2.sumaGrupo(0, new int[] { 2, 4, 8 }, 8) != true)
-			return false;
-		if (Taller2.sumaGrupo(1, new int[] { 2, 4, 8 }, 8) != true)
-			return false;
-		if (Taller2.sumaGrupo(1, new int[] { 2, 4, 8 }, 2) != false)
-			return false;
-		if (Taller2.sumaGrupo(0, new int[] { 1 }, 1) != true)
-			return false;
-		if (Taller2.sumaGrupo(0, new int[] { 9 }, 1) != false)
-			return false;
-		if (Taller2.sumaGrupo(0, new int[] {}, 0) != true)
-			return false;
-		if (Taller2.sumaGrupo(0, new int[] { 10, 2, 2, 5 }, 17) != true)
-			return false;
-		if (Taller2.sumaGrupo(0, new int[] { 10, 2, 2, 5 }, 15) != true)
-			return false;
-		if (Taller2.sumaGrupo(0, new int[] { 10, 2, 2, 5 }, 9) != true)
-			return false;
-		return true;
-	}
+
 
 	static boolean testCombinations() {
 		String[] abc = { "", "c", "b", "bc", "a", "ac", "ab", "abc" };
