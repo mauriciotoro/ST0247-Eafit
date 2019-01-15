@@ -7,7 +7,7 @@ import java.util.LinkedList;
 /**
  * Implementacion de un algoritmo para asignar vehiculos compartidos
  * Estructura de datos utilizada: Grafo con Matrices de Adyacencia
- * Complejidad: Peor Caso y Mejor Caso O(n)
+ * Complejidad: Peor Caso y Mejor Caso O(n*n)
  *
  * @author Mauricio Toro
  * @version 1
