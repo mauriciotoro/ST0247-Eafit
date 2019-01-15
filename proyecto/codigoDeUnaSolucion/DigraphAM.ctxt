@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=DigraphAM
+comment0.text=\n\ Esta\ clase\ es\ una\ implementaci\u00F3n\ de\ un\ digrafo\ usando\ matrices\ de\ adyacencia\n\ \n\ @author\ Mauricio\ Toro\ \n\ @version\ 1\n
+comment1.params=vertices
+comment1.target=DigraphAM(int)
+comment1.text=\n\ Constructor\ de\ DiagraphAM\n
+comment2.params=source\ destination\ weight
+comment2.target=void\ addArc(int,\ int,\ int)
+comment2.text=\n\ Metodo\ que\ agrega\ un\ arco\ entre\ dos\ vertices\n
+comment3.params=vertice
+comment3.target=java.util.ArrayList\ getSuccessors(int)
+comment3.text=\n\ Metodo\ que\ retorna\ el\ un\ ArrayList\ con\ el\ numero\ de\ todos\ los\ vertices\ que\ tengan\ una\ conexion\n\ con\ uno\n
+comment4.params=source\ destination
+comment4.target=int\ getWeight(int,\ int)
+comment4.text=\n\ Metodo\ que\ retorna\ el\ valor\ o\ peso\ de\ un\ arco\ entre\ dos\ vertices\n
+numComments=5

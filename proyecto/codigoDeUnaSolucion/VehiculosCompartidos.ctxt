@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=VehiculosCompartidos
+comment0.text=\n\ Implementacion\ de\ un\ algoritmo\ para\ asignar\ vehiculos\ compartidos\n\ Estructura\ de\ datos\ utilizada\:\ Grafo\ con\ Matrices\ de\ Adyacencia\n\ Complejidad\:\ Peor\ Caso\ y\ Mejor\ Caso\ O(n)\n\n\ @author\ Mauricio\ Toro\n\ @version\ 1\n
+comment1.params=numeroDePuntos\ p
+comment1.target=DigraphAM\ leerArchivo(int,\ float)
+comment1.text=\n\ Metodo\ para\ leer\ un\ archivo\ con\ los\ duenos\ de\ vehiculos\ y\ la\ empresa\n\ Complejidad\:\ Mejor\ y\ peor\ caso\ es\ O(n*n),\ donde\ n\ es\ son\ los\ duenos\ de\ vehiculos\ y\ la\ empresa\n\n\ @param\ \ numeroDePuntos\ \ El\ numero\ de\ puntos\ es\ 1\ de\ la\ empresa\ y\ n-1\ de\ los\ duenos\ de\ vehiculos\n\ @return\ un\ grafo\ completo\ con\ la\ distancia\ mas\ corta\ entre\ todos\ los\ vertices\n
+comment2.params=grafo\ p
+comment2.target=java.util.LinkedList\ asignarVehiculos(Graph,\ float)
+comment2.text=\n\ Algoritmo\ para\ asignar\ vehiculos\ compartidos\ (No\ tiene\ en\ cuenta\ la\ restriccion\ que\ hay\ en\ el\ problema)\n\ Lo\ que\ hace\ es\ agrupar\ los\ duenos\ de\ vehiculos\ en\ permutaciones\ de\ maximo\ 5\ elementos\n\ Complejidad\:\ Mejor\ y\ Peor\ Caso\ O(n),\ donde\ n\ son\ los\ duenos\ de\ vehiculos\ y\ la\ empresa\n\n\ @param\ \ grafo\ \ Un\ grafo\ que\ puede\ estar\ implementado\ con\ matrices\ o\ con\ listas\ de\ adyacencia\n\ @return\ una\ lista\ de\ listas\ con\ la\ permutacion\ para\ cada\ subconjunto\ de\ la\ particion\ de\ duenos\ de\ vehiculo\n
+comment3.params=permutacionParaCadaSubconjunto\ numeroDePuntos\ p
+comment3.target=void\ guardarArchivo(java.util.LinkedList,\ int,\ float)
+comment3.text=\n\ Metodo\ para\ escribir\ un\ archivo\ con\ la\ respuesta\n\ Complejidad\:\ Mejor\ y\ peor\ caso\ es\ O(n),\ donde\ n\ son\ los\ duenos\ de\ vehiculo\ y\ la\ empresa\n\n\ @param\ \ permutacionParaCadaSubconjunto\ es\ una\ lista\ de\ listas\ con\ la\ permutacion\ para\ cada\ subconjunto\ de\ la\ particion\ de\ duenos\ de\ vehiculo\n
+comment4.params=args
+comment4.target=void\ main(java.lang.String[])
+numComments=5
