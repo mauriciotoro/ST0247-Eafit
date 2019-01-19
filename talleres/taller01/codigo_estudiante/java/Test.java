@@ -9,7 +9,7 @@ import java.util.HashSet;
  * Ejecute esta clase luego de completar las clases DigraphAL y DigraphAM para
  * tener una idea de si su implementación está correcta.
  * 
- * @author Mateo Agudelo
+ * @author Camilo Paez
  */
 public class Test {
 	static final int SIZE = 12;
