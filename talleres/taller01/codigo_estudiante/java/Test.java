@@ -7,7 +7,7 @@ import java.util.HashSet;
  * documento.
  * 
  * Ejecute esta clase luego de completar las clases DigraphAL y DigraphAM para
- * tener una idea de si su implementación está correcta.
+ * tener una idea de si su implementaciï¿½n estï¿½ correcta.
  * 
  * @author Camilo Paez
  */
@@ -32,14 +32,7 @@ public class Test {
 		System.out.println("    getWeight() -> " + convert(testWeight(gList)));
 		System.out.println("    getSuccesors() -> " + convert(testSuccesors(gList)));
 
-		System.out.println("Recorridos:");
-		System.out.println("    DFS -> " + convert(testDFS(gList, gMatrix)));
-		System.out.println("    BFS -> " + convert(testBFS(gList, gMatrix)));
 
-		caminos = fillCaminos();
-		System.out.println("Hay Camino:");
-		System.out.println("    DFS -> " + convert(testHayCaminoDFS(gList, gMatrix)));
-		System.out.println("    BFS -> " + convert(testHayCaminoBFS(gList, gMatrix)));
 	}
 
 	static HashSet<Pair<Integer, Integer>> fillEdges() {
@@ -108,69 +101,7 @@ public class Test {
 		return true;
 	}
 
-	static boolean testDFS(DigraphAL gList, DigraphAM gMatrix) {
-		ArrayList<ArrayList<Integer>> dfs = new ArrayList<>(SIZE);
-		dfs.add(0, null);
-		dfs.add(1, null);
-		dfs.add(2, null);
-		dfs.add(3, new ArrayList<Integer>(Arrays.asList(3, 8, 9, 10)));
-		dfs.add(4, null);
-		dfs.add(5, new ArrayList<Integer>(Arrays.asList(5, 11, 2, 9, 10)));
-		dfs.add(6, null);
-		dfs.add(7, new ArrayList<Integer>(Arrays.asList(7, 8, 9, 11, 2, 10)));
-		dfs.add(8, new ArrayList<Integer>(Arrays.asList(8, 9)));
-		dfs.add(9, null);
-		dfs.add(10, null);
-		dfs.add(11, new ArrayList<Integer>(Arrays.asList(11, 2, 9, 10)));
 
-		for (int i = 0; i < SIZE; ++i) {
-			ArrayList<Integer> dfsList = Recorridos.dfs(gList, i);
-			ArrayList<Integer> dfsMatrix = Recorridos.dfs(gMatrix, i);
-
-			if (dfsList == null && dfsMatrix != null || dfsList != null && dfsMatrix == null)
-				return false;
-
-			if (dfs.get(i) == null && dfsList != null || dfs.get(i) != null && dfsList == null)
-				return false;
-
-			if (dfs.get(i) != null && (!dfsList.equals(dfsMatrix) || !dfs.get(i).equals(dfsList)))
-				return false;
-		}
-
-		return true;
-	}
-
-	static boolean testBFS(DigraphAL gList, DigraphAM gMatrix) {
-		ArrayList<ArrayList<Integer>> bfs = new ArrayList<>(SIZE);
-		bfs.add(0, null);
-		bfs.add(1, null);
-		bfs.add(2, null);
-		bfs.add(3, new ArrayList<Integer>(Arrays.asList(3, 8, 10, 9)));
-		bfs.add(4, null);
-		bfs.add(5, new ArrayList<Integer>(Arrays.asList(5, 11, 2, 9, 10)));
-		bfs.add(6, null);
-		bfs.add(7, new ArrayList<Integer>(Arrays.asList(7, 8, 11, 9, 2, 10)));
-		bfs.add(8, new ArrayList<Integer>(Arrays.asList(8, 9)));
-		bfs.add(9, null);
-		bfs.add(10, null);
-		bfs.add(11, new ArrayList<Integer>(Arrays.asList(11, 2, 9, 10)));
-
-		for (int i = 0; i < SIZE; ++i) {
-			ArrayList<Integer> bfsList = Recorridos.bfs(gList, i);
-			ArrayList<Integer> bfsMatrix = Recorridos.bfs(gMatrix, i);
-
-			if (bfsList == null && bfsMatrix != null || bfsList != null && bfsMatrix == null)
-				return false;
-
-			if (bfs.get(i) == null && bfsList != null || bfs.get(i) != null && bfsList == null)
-				return false;
-
-			if (bfs.get(i) != null && (!bfsList.equals(bfsMatrix) || !bfs.get(i).equals(bfsList)))
-				return false;
-		}
-
-		return true;
-	}
 
 	private static ArrayList<Pair<Integer, Integer>> fillCaminos() {
 		ArrayList<Pair<Integer, Integer>> caminos = new ArrayList<>();
@@ -193,51 +124,8 @@ public class Test {
 		return caminos;
 	}
 
-	static boolean testHayCaminoDFS(DigraphAL gList, DigraphAM gMatrix) {
-		boolean tmp;
 
-		for (int i = 0; i < SIZE; ++i)
-			for (int j : sinEntradas) {
-				tmp = Recorridos.hayCaminoDFS(gList, i, j);
-				if (tmp != Recorridos.hayCaminoDFS(gMatrix, i, j) || (i != j && tmp != false)) {
-					System.out.println("Aislados");
-					return false;
-				}
-			}
 
-		for (Pair<Integer, Integer> p : caminos) {
-			tmp = Recorridos.hayCaminoDFS(gList, p.first, p.second);
-			if (tmp != Recorridos.hayCaminoDFS(gMatrix, p.first, p.second) || tmp != true) {
-				System.out.printf("%d->%d\n");
-				return false;
-			}
-		}
-
-		return true;
-	}
-
-	static boolean testHayCaminoBFS(DigraphAL gList, DigraphAM gMatrix) {
-		boolean tmp;
-
-		for (int i = 0; i < SIZE; ++i)
-			for (int j : sinEntradas) {
-				tmp = Recorridos.hayCaminoBFS(gList, i, j);
-				if (tmp != Recorridos.hayCaminoBFS(gMatrix, i, j) || (i != j && tmp != false)) {
-					System.out.println("Aislados");
-					return false;
-				}
-			}
-
-		for (Pair<Integer, Integer> p : caminos) {
-			tmp = Recorridos.hayCaminoBFS(gList, p.first, p.second);
-			if (tmp != Recorridos.hayCaminoBFS(gMatrix, p.first, p.second) || tmp != true) {
-				System.out.printf("%d->%d\n");
-				return false;
-			}
-		}
-
-		return true;
-	}
 
 	static String convert(boolean b) {
 		return b ? "correcta" : "incorrecta";
