@@ -179,7 +179,7 @@ public class Test {
 		return true;
 	}
 
-	static boolean equalsUnordered(String[] a, ArrayList<String> b) {
+	static boolean equalsUnordered(String[] a, LinkedList<String> b) {
 		if (a.length != b.size())
 			return false;
 		TreeSet<String> set = new TreeSet<>();
