@@ -14,7 +14,7 @@ public class Taller2 {
 	
 	*/	
 	public static LinkedList<String> combinations(String str) {
-	        LinkedList<String> respuesta = new LinkedList<Integer>();
+	        LinkedList<String> respuesta = new LinkedList<String>();
 		combinations("", str, respuesta);
                 return respuesta;
 	}
@@ -39,8 +39,8 @@ public class Taller2 {
 	* @return un ArrayList que contiene las permutaciones
 	*/	
 	public static LinkedList<String> permutations(String s) {
-		LinkedList<String> respuesta = new LinkedList<Integer>();
-		permutations("", str, respuesta);
+		LinkedList<String> respuesta = new LinkedList<String>();
+		permutations("", s, respuesta);
                 return respuesta;
 	}
 
