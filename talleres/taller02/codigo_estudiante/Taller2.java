@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+import java.util.LinkedList;
 
 /**
  * Clase en la cual se implementan los metodos del Taller 2
@@ -8,25 +8,27 @@ import java.util.ArrayList;
 public class Taller2 {
 	
 	/**
-	* Metodo auxiliar que llama al metodo combinations posterios
+	* Metodo público que llama al metodo combinations posteriormente
 	* 
-	* @param  list el conjunto sobre el cual se haran las combinaciones
+	* @param str cadena sobre el cual se haran las combinaciones (o subconjuntos)
 	
 	*/	
-	public static void combinations(ArrayList list) {
-		
+	public static LinkedList<String> combinations(String str) {
+	        LinkedList<String> respuesta = new LinkedList<Integer>();
+		combinations("", str, respuesta);
+                return respuesta;
 	}
 
 	/**
-	* Metodo para obtener las posibles combinaciones que se pueden hacer
+	* Metodo para obtener las posibles combinaciones (o subconjuntos) que se pueden hacer
 	* con los elementos dados
 	* 
-	* @param  index lleva la posicion para recorrer el conjunto 
-	* @param list el conjunto que tiene todas las combinaciones
-	* @param s la cadena actual
+	* @param  loQueLlevo cadena de caracteres con lo que ya se tiene del subconjunto
+	* @param loQueMeFalta cadena de caracteres con lo que me falta por calcular del subconjunto
+	* @param list lista de cadenas para almacenar las combinaciones (o subconjuntos)
 	* 
 	*/	
-	private static void combinations(String s, int index, ArrayList<String> list) {
+	private static void combinations(String loQueLlevo, String loQueMeFalta, LinkedList<String> list) {
 		
 	}
 
@@ -36,8 +38,10 @@ public class Taller2 {
 	* @param  s la cadena a la cual se le haran las permutaciones
 	* @return un ArrayList que contiene las permutaciones
 	*/	
-	public static ArrayList<String> permutations(String s) {
-		
+	public static LinkedList<String> permutations(String s) {
+		LinkedList<String> respuesta = new LinkedList<Integer>();
+		permutations("", str, respuesta);
+                return respuesta;
 	}
 
 	/**
@@ -45,17 +49,17 @@ public class Taller2 {
 	* con los caracteres de una cadena dada, recuerde que las letras no se 
 	* repiten en este ejercicio
 	* 
-	* @param  pre parte de la cadena que empieza desde 0 a i
-	* @param pos parte de cadena que empieza desde i a n
+	* @param  loQueLlevo parte de la cadena que hace parte de la permutacion
+	* @param loQueMeFalta parte de cadena que falta por calcular en una permutacion
 	* @param list el conjunto que tiene todas las permutaciones
 	* 
 	*/	
-	private static void permutations(String pre, String pos, ArrayList<String> list) {
-		
+	private static void permutations(String loQueLlevo, String loQueMeFalta, LinkedList<String> list) {
+
 	}
 
 	/**
-	* Metodoque imprime en pantalla como esta el tablero dado
+	* Metodo que imprime en pantalla como esta el tablero dado
 	* 
 	* @param  tablero es un arreglo con las posiciones de un tablero
 	* de ajedrez
@@ -95,6 +99,19 @@ public class Taller2 {
 	* @return numero de soluciones
 	*/	
 	public static int queens(int n) {
+	    return queens(n, 0, new int[n]);
+	}
+
+	/**
+	* Metodo que muestra el numero de posibles soluciones al problema
+	* 
+	* 
+	* @param  n numero de reinas
+	* @param  columna indice de la columna que sera revisada
+	* @param  tablero aqui se almacena una solucion de las n reinas
+	* @return numero de soluciones
+	*/
+	private static int queens(int n, int columna, int[] tablero) {
 		
 	}
 
