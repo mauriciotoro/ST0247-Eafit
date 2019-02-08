@@ -9,15 +9,13 @@ import java.util.Collections;
 public class Taller3 {
 	
 	/**
-	* Metodo que verifica si es posible poner la reina en la posicion (r,c)
-	* dado un tablero
+	* Metodo que verifica si es posible poner las reinas hasta la columna c
 	* 
-	* @param  r fila
-	* @param  c columna
+	* @param  c hasta esta columna revisa
 	* @param  tablero el tablero
 	* @return true si es posible, false de lo contrario
 	*/	
-	private static boolean puedoPonerReina(int r, int c, int[] tablero) {
+	private static boolean puedoPonerReina(int c, int[] tablero) {
 		
 	}
 	
@@ -28,17 +26,17 @@ public class Taller3 {
 	* @return numero de soluciones
 	*/	
 	public static int nReinas(int n) {
-		
+		return nReinas(0, n, new int[n]);
 	}
 
 	/**
 	* Metodo devuelve el numero de soluciones que tiene el problema
 	* 
-	* @param  r fila
+	* @param  c columna
 	* @param  n numero de reinas
 	* @return numero de soluciones
 	*/	
-	private static int nReinas(int r, int n, int[] tablero) {
+	private static int nReinas(int c, int n, int[] tablero) {
 	
 	}
 	
