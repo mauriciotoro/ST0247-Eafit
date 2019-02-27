@@ -9,7 +9,7 @@ import java.util.Collections;
  * @author Mauricio Toro, Mateo Agudelo,
  */
 public class DigraphAL extends Digraph {
-	// complete...
+	
 	ArrayList<ArrayList<Pair<Integer, Integer>>> list;
 
 	public DigraphAL(int size) {
@@ -21,13 +21,12 @@ public class DigraphAL extends Digraph {
 	}
 
 	public void addArc(int source, int destination, int weight) {
-		// complete...
-		// recuerde: grafo dirigido!
+		
 		list.get(source).add(Pair.makePair(destination, weight));
 	}
 
 	public ArrayList<Integer> getSuccessors(int vertex) {
-		// complete...
+		
 		ArrayList<Integer> s = new ArrayList<>(list.get(vertex).size());
 		for (Pair<Integer, Integer> p : list.get(vertex))
 			s.add(p.first);
@@ -38,7 +37,7 @@ public class DigraphAL extends Digraph {
 	}
 
 	public int getWeight(int source, int destination) {
-		// complete...
+	
 		for (Pair<Integer, Integer> p : list.get(source))
 			if (p.first == destination)
 				return p.second;

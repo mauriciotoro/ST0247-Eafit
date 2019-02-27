@@ -50,7 +50,7 @@ public class Taller4 {
 	* @param g grafo dado 
 	* @return cual es el costo que tiene
 	*/
-	public static int recorrido(Digraph g) {
+	public static int caminoHamiltoniano(Digraph g) {
 		
 	}
 
@@ -63,20 +63,11 @@ public class Taller4 {
 	* @param unvisited arreglo de nodos aun no visitados
 	* @return cual es el costo que tiene
 	*/
-	private static int recorrido(Digraph g, int v, int[] unvisited) {
+	private static int caminoHamiltoniano(Digraph g, int v, int[] unvisited) {
 		
 	}
 
 
-	/**
-	* Metodo que dada un conjunto de costos en cada arco, encuentra el camino desde el nodo v
-	* @param g grafo dado 
-	* @param v vertice inicial
-	* @param coso arreglo de valores que tiene de ir de un nodo a otro
-	* 
-	*/
-	private static void dfs(Digraph g, int v, int[] costo) {
-		
-	}
+
 
 }
