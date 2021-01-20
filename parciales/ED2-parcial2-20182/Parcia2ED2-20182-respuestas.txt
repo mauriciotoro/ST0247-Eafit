@@ -1,0 +1,23 @@
+1(a) (iii) log n
+2(b) a[mitad]
+3(c) a, mitad + 1, de, z
+
+2a           linea 6: i + 1
+2b           linea 8: (res + 1 | 1 + res)
+2c           linea 9: (i)
+2d           salida : 2  
+
+3a  Respuesta: O(N^2*k)
+
+    La ecuación está dada como f(n, k) = f(n - i, k - 1) | (0 <= i < n)
+    Podemos mirar que por cada i | (0 <= i < n), la función de recurrencia se comporta de la siguiente manera: 
+    f(n - i, k - 1), f(n - (i + 1), k - 1), f(n - (i + 2), k - 1), ..., f(n - (i + (n - i)), k - 1).
+    Entonces vemos que la k se reduce en 1 por cada iteracion que hago sobre la i.
+    Es decir, la complejidad(temporal) es f(n - i)*O(k) (0<=i<n).
+    Ahora nos falta mostrar que f(n - i) (0<=i<n) se comporta como un O(n^2), porque O(n^2)*O(k) = O(n^2*k). Pero en este punto asumimos que no se está computando cada valor de f(n, k) más de una vez, porque de lo contrario se comportaría exponencial, es decir, que estamos aplicando programación dinámica.
+    Vemos que en la ecuacion f(n - i) n siempre se reduce en n - i, n - i - 1, n - i - 2, ..., n - (i + n - i). Tomemos el mayor valor de esos, vemos que es n - 1. Y volvemos a aplicar lo mismo. El siguiente valor es n - 2. El siguiente n - 3 y así sucesivamente. Vemos que en cada iteracion hacemos n - 1 + n - 2 + n - 3 + n - 4 + ... + n - i. Entonces se puede decir que es n^2 para un i pequeño, el peor de los casos. 
+    Entonces solo es reemplazar y ya está. f(n - i) *O(k) = O(n^2)*O(k) = O(n^2*k)
+
+3b  Respuesta: sol(n - i, k - 1, f) 
+3c  Respuesta: f[n][k]
+3d  Respuesta: sol(n, k, f)

@@ -1,0 +1,162 @@
+\documentclass[10 pt]{article}
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usepackage[margin=0.5 in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{tabu}
+\usepackage{color}
+\usepackage{amsmath}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{enumitem}
+\usepackage{multicol}
+\setlength{\columnsep}{1cm} 
+\title{\textbf {Estructuras de Datos 2 - ST0247\\Segundo Parcial}}
+\author{Nombre ..............................\\
+		Departamento de Informática y Sistemas\\
+		Universidad EAFIT\\}
+\date{Octubre 25 de 2018}
+\begin{document}
+\lstdefinestyle{customc}{
+	language=Java, 
+	numbers=left, 
+	showspaces=false,
+    showstringspaces=false, 
+    tabsize=2, 
+    breaklines=true,
+    xleftmargin=5.0ex,
+}
+\lstset{escapechar=@,style=customc, numbers=left, stepnumber = 1} 
+\maketitle
+\begin{multicols}{2}
+\section{Divide y Vencerás 30\%}
+Considere una secuencia de números $a$ : $a_1, a_2, a_3, ..., a_n$. Para esta secuencia siempre se cumple que $a_1 \leq a_2 \leq ... \leq a_n$, es decir, esta secuencia está ordenada de menor a mayor (siendo $a_1$ el menor elemento de $a$ y $a_n$ el mayor elemento de $a$). Ahora, considere un entero $z$. Queremos encontrar, en la secuencia, \textbf{el mayor numero que es menor o igual a z}. 
+La solución a este problema simplemente es hacer \textbf{búsqueda binaria} en la secuencia, teniendo en cuenta, en la búsqueda, que el elemento actual sea menor o igual al elemento examinado. Ayudanos a terminar el  código.
+\begin{itemize}
+\item \textbf{Ejemplo}: Sea $a$ = \{3, 7, 11, 12, 23, 24, 27, 77, 178\} y $z$ = 45. La respuesta es 27. 
+\end{itemize}
+\begin{lstlisting}
+  int bus(int[]a,int iz,int de,int z){
+    if(iz>de){
+      return -1;      }  
+    if(a[de]>=z){
+      return a[de];   }
+    int mitad=(iz+de)/2;
+    if(a[mitad]==z){
+    return .........; }
+    if(mitad>0){
+      if(a[mitad-1]<=z && z<a[mitad]){
+        return a[mitad - 1];     }   }
+    if(z<a[mitad]){
+      return bus(a,iz,mitad-1,z); }
+    //else
+    return bus(...., ...., ...., ....);
+  }
+  public int bus(int[] a, int z) {
+     return bus(a, 0, a.length - 1, z);
+  }
+\end{lstlisting}
+\begin{enumerate}[label=(\alph*)]
+\item (10\%) ¿Cuál es la complejidad asintótica, en el peor de los casos, del algoritmo anterior?
+\begin{enumerate}[label=(\roman*)]
+\item $T(n) = 2.T(n/2) + C$ que es $O(n)$
+\item $T(n) = 2.T(n/2) +Cn$ que es $O(n\times\log_2 n)$
+\item $T(n) = T(n/2) + C$ que es $O(\log_2 n)$
+\item $T(n) = 4.T(n/2) + C$ que es $O(n^2)$
+\end{enumerate}
+\item (10\%) Complete la línea 8 ..........
+\item (10\%) Complete la línea 15 ...., ...., ...., ....
+\end{enumerate}
+
+
+\columnbreak
+\section{Voraces 40\%}
+Se está preparando la llegada del Rey a su castillo. Por seguridad se han ubicado $N$ puestos de guardia, cada uno a $10m$ de distancia. Ya se han ubicado algunos guardias en posiciones estratégicas. Se sabe que el guardia en la posición $i$ protegerá al guardia en la posición $j$ sí $| j - i| \leq K$. En la posición $0$ y en la posición $N-1$ siempre hay guardias, pero hay algunas posiciones que aún no se han cubierto. 
+
+La guardia real quiere saber cuál es la mínima cantidad de guardias que tiene que contratar, de tal manera que todos los guardias siempre se estén cuidando mutuamente y ¡haya más seguridad! Las posiciones se entregan como un arreglo $A$ donde la posición $i$ del arreglo contiene el número $i + 1$ si la posición $i$ está ocupada por un guardia o un $0$ si no hay un guardia en esa posición.
+
+\textbf{Ejemplos: } Para $x_1 = \{1,2,0,0,5,0,0,8\}$, $K_1 = 2$, la respuesta sería $2$. Para $x_2=\{1,0,3,4\}$, $K_2=2$, la respuesta sería $0$. Para $x_3=\{1,0,0,0,5\}$, $K_3=2$, la respuesta sería $1$. Para el primer ejemplo, sería optimo ubicar guardias en las posiciones $2$ y $6$. Así, todos los guardias se protegerán mutuamente. 
+
+\begin{lstlisting}
+int solucion(int[]x,int K){
+  int last = 0; //ultimo guardia
+  int res = 0; //respuesta
+  int n = x.length;
+  for (int i = 0; i < n; ++i) {
+    if (x[i] == .....) last = i;
+    if (i - last == K) {
+      res = ..............;
+      last = .............;
+    }
+  };
+  return res;
+}
+\end{lstlisting}
+% Respuestas linea 6: i+1
+%            linea 8: (res + 1 | 1 + res)
+%            linea 9: (i)
+%            salida: 2             
+%
+\begin{enumerate}[label=(\alph*)]
+    \item (10\%) Complete la línea 6 ..................
+	\item (10\%) Complete la línea 8 ..................
+	\item (10\%) Complete la línea 9 ..................
+	\item (10\%) Determine la salida para $x_t = \{1,0,0,4,0,0,0,0,0,0,11\}$, $K_t=3$: ........
+\end{enumerate}
+
+
+\pagebreak
+\section{Programación Dinámica 40\%}
+\columnbreak
+
+Dados dos números no negativos $n$ y $k$, encuentre el numero de formas de que la suma de $k$ enteros no negativos sume exactamente $n$. Por ejemplo, si $n = 5$ y $k = 2$, hay exactamente $f(5,2)=6$ formas de sumar $n=6$ con $k=2$ números: 0 + 5 = 5, 1 + 4 = 5, 2 + 3 = 5, 3 + 2 = 5, 4 + 1 = 5, 5 + 0 = 5. La función $f(n,k)$ describe recursivamente ese número de formas de sumar:
+\begin{equation}
+f(n, k)=\begin{cases}
+1, & \text{si $k=1$}.\\
+\sum_{i = 0}^{n} f(n - i, k - 1), & \text{si $k > 1$}.
+\end{cases}
+\end{equation}
+
+Y a continuación está la versión de esa función, utilizando programación
+dinámica \emph{bottom-up}:
+
+\begin{lstlisting}
+int sol(int n, int k, int[][] f){
+  if(k == 1) return 1;
+  if(n < 0 | k < 0) return 0;
+  if(f[n][k] != -1) return f[n][k];
+  int formas = 0;
+  for(int i = 0; i < n + 1; ++i){
+    formas =formas + ...............;
+  }
+  ........... = formas;
+  return formas;
+}
+public int sol(int n, int k){
+  int[][] f = new int[n+1][k+1];
+  for(int i = 0; i < n + 1; i++){
+    for(int j = 0; j < k + 1; j++){
+      f[i][j] = -1;
+    }
+  }
+  return ...........;
+}
+\end{lstlisting}
+\begin{enumerate}[label=\alph*)]
+	\item (10\%) ¿Cuál es la complejidad asintótica, para el peor de los casos, del algoritmo anterior?
+	\begin{enumerate}[label=(\roman*)]
+		%Respuesta: O(N^2*k)
+		\item $O(n + k)$
+		\item $O(n^2 + k)$
+		\item $O(n^2 \times k)$
+		\item $O(n \times k)$
+	\end{enumerate}
+	%Respuesta: sol(n - i, k - 1, f) 
+	\item (10\%) Complete la línea 7 ...............	
+	%Respuesta: f[n][k]
+	\item (10\%) Complete la línea 9 ................
+	%Respuesta: sol(n, k, f)
+	\item (10\%) Complete la línea 19 ...............
+\end{enumerate}
+\end{multicols}
+\end{document}

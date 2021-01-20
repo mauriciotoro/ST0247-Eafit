@@ -1,0 +1,17 @@
+1.
+ a) Respuesta O(n * d)
+ b) Respuesta min(f[i], f[i - j] + 1)
+ c) Respuesta: f[n - 1]
+
+2. 
+b. aval;
+a. color[i]
+c. O(n^2)
+
+3.
+a. Arrays.sort(a) , Arrays.sort(b)
+b. math.abs(a[i]-b[i])
+
+4.
+a. dp(S - i, f) * i
+b. Respuesta: 0

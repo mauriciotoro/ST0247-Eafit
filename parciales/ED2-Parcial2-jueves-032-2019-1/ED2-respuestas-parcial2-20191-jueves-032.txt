@@ -1,0 +1,17 @@
+1 
+a. a[j] < a[i]
+b. costo += 1
+
+2. 
+a . return false;
+b. can[i - a[j - 1]] [j - 1]
+c. O(n*sum)
+
+3.
+a. paths[next]
+b. paths[to] + paths[next]
+c. O(n^2)
+
+4. 
+a. O(log b)
+b. power(a, b / 2);

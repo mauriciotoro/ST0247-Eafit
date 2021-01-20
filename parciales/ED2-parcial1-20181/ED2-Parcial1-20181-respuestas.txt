@@ -1,0 +1,17 @@
+1. Permutaciones
+ a) true
+ b) false
+ c) O(n!)
+
+2. DFS y BFS
+  a) (iii) 0, 1, 4, 3, 2
+  b) (i)   0, 1, 2, 3, 4
+
+3. Fuerza bruta 
+  a) temp % 10
+  b) (ii) O(|N-M|) x log(10) m
+
+4. Voraces
+  a) temp / 2
+  b) temp + minimo
+  c) (ii)

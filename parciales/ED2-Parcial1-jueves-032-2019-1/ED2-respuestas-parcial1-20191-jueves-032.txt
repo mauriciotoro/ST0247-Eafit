@@ -1,0 +1,21 @@
+1.
+ a Respuesta O(n)
+ b Respuesta: d[i] > d[u], f[i] > f[w]
+
+2.
+  a Respuesta: 
+    5  gen.length() > n, 
+    11 !gen.contains(ch)
+  b Respuesta:
+    16 res = 1
+3. 
+  a s1[i] 
+  b O(s1*s2)
+
+4.
+  a   Respuesta: a[m] == 1
+  b   Respuesta: d) O(log n)
+
+5. 
+  a. O(n^2)
+  b. result[u] = -1

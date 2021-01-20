@@ -1,0 +1,197 @@
+\documentclass[9.5 pt]{article}
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usepackage[margin=0.5 in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{tabu}
+\usepackage{color}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{enumitem}
+
+\usepackage{multicol}
+
+\usepackage{amsmath}
+\usepackage[spanish, onelanguage]{algorithm2e}
+
+
+\title{\textbf {Estructuras de Datos 2 - ST0247\\Examen Parcial 2 - Martes (033)
+}}
+\author{Nombre ..............................\\
+		Departamento de Informática y Sistemas\\
+		Universidad EAFIT\\}
+\date{Mayo 9 de 2019}
+\begin{document}
+\lstdefinestyle{customc}{
+	language=Java, 
+	numbers=left, 
+	showspaces=false,
+    showstringspaces=false, 
+    tabsize=2, 
+    breaklines=true,
+    xleftmargin=5.0ex,
+}
+\lstset{escapechar=@,style=customc, numbers=left, stepnumber = 1} 
+\maketitle
+\textbf{En las preguntas de selección múltiple, una respuesta incorrecta tendrá
+una deducción de 0.2 puntos en la nota final. Si dejas la pregunta sin
+responder, la nota será de 0.0. Si no conoces la respuesta, no adivines.}
+
+
+\begin{multicols}{2}
+
+
+	%Fuente: https://codeforces.com/contest/910/problem/A
+	\section{Programación Dinámica (30\%)}
+	Existe una \emph{rana} sobre una roca en el punto $1$ de un río con puntos $1, 2, \cdots, n - 1, n$. La rana desea llegar al punto $n$ haciendo el menor número de saltos posibles. La rana puede realizar saltos de a lo sumo $d$ puestos siempre y cuando al punto que salte contenga una roca.  Ayúdanos a escribir un programa que nos determine el \textbf{mínimo número de saltos} que tiene que realizar la rana para llegar al punto $n$.  \\
+	Por ejemplo, si existen $8$ puntos en el río y la configuración (\texttt{config}) de los puntos es $\{1, 0, 0, 1, 1, 0, 1, 1\}$ (donde el valor $1$ indica la presencia de una roca), para un valor $d = 3$, la rana puede llegar al punto $8$ en tres saltos de la siguiente forma: primero salta al punto $4$, luego al punto $7$ y, finalmente, al punto $8$.
+		\begin{itemize}[noitemsep]
+		\item La constante Integer.MAX\_VALUE devuelve el valor $2^{31} - 1$.
+		\item El método Arrays.fill(int[] $a$, int $value$) ubica en cada posición del arreglo $a$, el valor $value$.
+
+	\end{itemize}
+	\begin{lstlisting}
+	int rana(int[]config, int d, int[]f){
+	  int n = config.length;
+	  asssert n == f.length;
+	  Arrays.fill(f, Integer.MAX_VALUE);
+	  //f[i]: minimo numero de saltos  
+	  //hasta llegar al punto i.
+	  f[0] = 0;
+	  for(int i=0; i<n; ++i){
+	    for(int j=1; j<=d; ++j){
+	      if(i-j>=0 && config[i]==1){
+	        f[i]=...................;
+	      }
+	    }
+	  }
+	  return ..........;
+	}
+	\end{lstlisting}
+	\begin{enumerate}[label=\alph*]
+		% Respuesta O(n * d)
+		\item (10\%) Determina la complejidad asintótica, en el peor de los casos, del algoritmo anterior:
+		\indent\rule{100pt}{0.4pt}
+		% Respuesta min(f[i], f[i - j] + 1)
+		\item (10\%) Completa la línea 9
+		\indent\rule{100pt}{0.4pt}
+		% Respuesta: f[n - 1]
+		\item (10\%) Completa la línea 13
+		\indent\rule {100pt}{0.4pt}
+	\end{enumerate}
+	
+
+	\section{Voraces 30\%}
+	El coloramiento de grafos es un problema principal en la ingeniería de sistemas, de allí se pueden resolver muchas tareas, como lo son asignación de salones, semáforos, entre otras. Por eso, hoy vamos a desarrollar un algoritmo voraz para colorear un grafo con la mínima cantidad de colores. Ayúdanos a resolver el problema de encontrar la mínima cantidad de colores para pintar un grafo cualquiera. El algoritmo es el siguiente:
+	\begin{itemize}[noitemsep]
+		\item Colorear el vértice $0$ con el color $0$.
+		\item Por cada uno de los restantes $n – 1$ vertices del grafo, tomar un vértice $u$. Colorear $u$ con el menor color que aún no ha sido utilizado para colorear sus vértices adyacentes. Si todos los colores previos ya han sido utilizados, colorear $u$ con un nuevo color.
+	\end{itemize}
+	\begin{lstlisting}
+	int colorear(boolean[][] grafo){
+	  int n = grafo.length;
+	  int[] color = new int[n + 1];
+	  for(int i = 0; i < n; ++i) color[i] = -1;
+	  color[0] = 0;
+	  boolean[] colordisponible = new boolean[n + 1];
+	  for(int i = 0; i < n; ++i) colordisponible[i] = true;
+	  for(int u = 1; u < n; ++u){
+	    for(int i = 0; i < n; ++i)
+	      if(grafo[u][i])
+	        if(color[i] != -1)
+	          colordisponible[color[i]] = false;
+	  int aval;
+	  for(aval = 0; aval < n; ++aval)
+	    if(colordisponible[aval])
+	      break;
+	  color[u] = ............;
+	  for(int i = 0; i < n; ++i) colordisponible[i] = true;
+	  boolean[] usado = new boolean[n + 1];
+	  int res = 0;
+	  for(int i = 0; i < n; ++i) if(!usado[color[i]]){
+	    usado[..............] = true;
+	    res++;
+	  }
+	  return res;
+	}
+	\end{lstlisting}
+	\begin{enumerate}[label=\alph*)]
+		\item (10\%) Completa la línea 22 ...........
+		\item (10\%) Completa la línea 17 ...........
+		\item (10\%) ¿Cuál es la complejidad asintótica, en el peor de los casos, del algoritmo anterior?
+		\begin{enumerate}[label=\roman*)]
+			\item $O(n)$
+			\item $O(n \times \log(n))$
+			\item $O(n^2)$
+			\item $O(n^3)$
+		\end{enumerate}
+	\end{enumerate}
+
+
+	
+\section{Voraces 20\%}
+	  Dados dos arreglos de enteros $a$, $b$ de tamaño $n$ cada uno, encuentre dos permutaciones $a'$, $b'$ tales que $\sum\limits_{i = 0}^{n - 1}{|a'_i - b'_i|}$ sea tan pequeño como sea posible.
+
+{\footnotesize
+  \textbf{Nota: } En Java, \texttt{Math.abs(n)} calcula el valor absoluto de $n$.
+  \begin{lstlisting}
+  int solve(int[] a, int[] b){
+    int n = a.length;
+    //Paso 1: Procesamiento inicial
+    ..............;
+    ..............;
+    int res = -1;
+    for(int i = 0; i < n; ++i){
+      //Desicion voraz
+      res += Math.abs(a[i] - b[i]);
+    }
+    return res;
+  }
+  \end{lstlisting}
+  }
+
+	\begin{enumerate}[label=\alph*)]
+		\item Completa las líneas 4, 5 ...............,\ \  ............
+		\item Completa la línea 9 ..................
+	\end{enumerate}
+
+	
+	\section{Programación Dinámica (20\%)}
+	En áreas como la criptografía es usual la descomposición de números para encontrar una contraseña.  Dado un entero positivo $S$, necesitamos descomponerlo en la suma de al menos $2$ números enteros positivos, de tal forma que la multiplicación de tales enteros sea tan grande como sea posible. Vea los siguientes ejemplos:
+	\begin{itemize}[noitemsep]
+		\item $S = 5$. $S = 2 + 3$. Respuesta: $2\times 3 = 6$.
+		\item $S = 7$. $S = 3 + 4$. Respuesta: $3\times 4 = 12$.
+		\item $S = 10$. $S = 3 + 3 + 4$. Respuesta: $3 \times 3 \times 4 = 36$.
+		\item $S = 2$. $S = 1 + 1$. Respuesta: $1 \times 1 = 1$.  
+	\end{itemize}
+	\begin{lstlisting}
+	int dp(int S, int[] f) {
+	  if (S <= 1) return ...............;
+	  if (S == 2) return 1;
+	  if (f[S] != -1) {
+	    return f[S];
+	  }
+	  int res = 0;
+	  for (int i = 1; i <= S; i++) {
+	    res=Math.max(res, (S - i) * i);
+	    res=Math.max(res, ...........);
+	  }
+	  f[S] = res;
+	  return res;
+	}
+	int solve(int S){
+	  int[] f = new int[S + 1];
+	  Arrays.fill(f, -1);
+	  return dp(S, f);
+	}
+	\end{lstlisting}
+	\begin{enumerate}[label=\alph*]
+		% Respuesta: dp(S - i, f) * i
+		\item Completa la línea 10
+		\indent\rule {100pt}{0.4pt}
+		%Respuesta: 0
+		\item Completa la línea 2
+		\indent\rule {105pt}{0.4pt}
+	\end{enumerate}
+\end{multicols}
+\end{document}

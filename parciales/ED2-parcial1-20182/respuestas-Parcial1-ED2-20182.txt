@@ -1,0 +1,15 @@
+1.
+  a. iv) tiene razón y justifica bien
+  b. Ordenaría los números de menos a mayor y seleccionaría los primeros k. Complejidad O(n logn).
+     Es correcto porque la menor suma con k elementos es la de los k números menores.
+2.
+  a. i + 1
+  b. left == right
+3. 
+  a. i-1, j-1
+  b. ni, nj
+  c. O(2^n)
+4. 
+  a. r == N
+  b. a[r] = i
+  c. r + 1

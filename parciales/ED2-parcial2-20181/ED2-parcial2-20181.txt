@@ -1,0 +1,37 @@
+%Respuestas:
+%Respuestas :
+%(a) (iii) log n
+%(b) a[mitad]
+%(c) a, mitad + 1, de, z
+
+% 2. Programación Dinámica
+% (a) scm[i] = 1; 
+% (b) scm[i] = scm[j] + 1;
+% (b) max = scm[i];
+% (c) (iii)
+
+
+int lis(int arr[]) {
+  int n = arr.length;
+  int lis[] = new int[n];
+  int i,j,max = 0;
+  /* Inicializar la tabla lis */
+  for ( i = 0; i < n; i++ ) {
+      lis[i] = 1; }
+  /* Calcular usando la tabla lis*/
+  for ( i = 1; i < n; i++ ) {
+      for ( j = 0; j < i; j++ ) {
+        if ( arr[i] > arr[j] && lis[i] < lis[j] + 1) {
+           lis[i] = lis[j] + 1; } } }
+  /* Pick maximum of all LIS values */
+  for ( i = 0; i < n; i++ ) {
+      if ( max < lis[i] ) {
+          max = lis[i];  } }
+  return max;
+}
+
+% 3. Programación Dinámica
+% (a) d[i][j]
+% (b) d[i][k] o d[k][j]
+% (c) d[i][k] o d[k][j]
+% Nota: En el ejercicio inmediatamente anterior alguna de las dos es valida, pero globalmente es un or exclusivo, es decir, tiene que estar una y no las dos, i.e. (d[i][k], d[k][j]) o (d[k][j], d[i][k])

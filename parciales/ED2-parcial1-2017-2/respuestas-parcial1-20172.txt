@@ -1,0 +1,22 @@
+1. 
+   % public static int search2(String pat, String txt) {
+    %     int m = pat.length();
+    %     int n = txt.length();
+    %     int i, j;
+    %     for (i = 0, j = 0; i < n && j < m; i++) {
+    %         if (txt.charAt(i) == pat.charAt(j)) j++;
+    %         else {
+    %             i -= j;
+    %             j = 0;
+    %         }
+    %     }
+    %     if (j == m) return i - m;    // found
+    %     else        return n;        // not found
+    % }
+
+  Es O(n.m)
+
+
+4. 
+    Línea 7: 1
+    Línea 11: ni, nj

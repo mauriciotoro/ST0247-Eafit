@@ -1,0 +1,30 @@
+1. GRafo con matrices y con listas
+
+2. Recorridos DFS y BFS
+
+3.
+
+A) %ordenar(arr, k+1);
+B) %O(n!)
+
+4. 
+
+ public int solucionar(int n, int a, int b, int c){
+% 	//Claramente si n es menor que los otros valores, no se puede obtener ninguna
+% 	//combinacion.
+% 	if(n == 0 || (n < a && n < b && n < c)){
+% 		return 0;
+% 	}
+% 	//Probemos restando el valor de "a" a n.
+% 	int res = solucionar(n - a, a, b, c) + 1;
+% 	//Maximicemos el resultado quitandole b a n.
+% 	res = max(res, solucionar(n - b, a, b, c) + 1);
+% 	//Maximicemos el resultado quitandole c a n.
+% 	res = max(res, solucionar(n -c, a, b, c) + 1);	
+% 	return res;
+% }
+
+
+5.
+
+%if (min > adjacencyMatrix[element][i])                       {

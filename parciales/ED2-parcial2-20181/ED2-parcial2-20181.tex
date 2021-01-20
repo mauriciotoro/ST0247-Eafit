@@ -1,0 +1,162 @@
+\documentclass[10 pt]{article}
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usepackage[margin=0.5 in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{tabu}
+\usepackage{color}
+\usepackage{amsmath}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{enumitem}
+\usepackage{multicol}
+\setlength{\columnsep}{1cm} 
+\title{\textbf {Estructuras de Datos 2 - ST0247\\Segundo Parcial}}
+\author{Nombre ..............................\\
+		Departamento de Informática y Sistemas\\
+		Universidad EAFIT\\}
+\date{Mayo 10 de 2018}
+\begin{document}
+\lstdefinestyle{customc}{
+	language=Java, 
+	numbers=left, 
+	showspaces=false,
+    showstringspaces=false, 
+    tabsize=2, 
+    breaklines=true,
+    xleftmargin=5.0ex,
+}
+\lstset{escapechar=@,style=customc, numbers=left, stepnumber = 1} 
+\maketitle
+\begin{multicols}{2}
+\section{Divide y Vencerás 30\%}
+Considere una secuencia de números $a$ : $a_1, a_2, a_3, ..., a_n$. Para esta secuencia siempre se cumple que $a_1 \leq a_2 \leq ... \leq a_n$, es decir, esta secuencia está ordenada de menor a mayor (siendo $a_1$ el menor elemento de $a$ y $a_n$ el mayor elemento de $a$). Ahora, considere un entero $z$. Queremos encontrar, en la secuencia, el mayor numero que es menor o igual a $z$. 
+La solución a este problema simplemente es hacer \textbf{búsqueda binaria} en la secuencia, teniendo en cuenta, en la búsqueda, que el elemento actual sea menor o igual al elemento examinado. Ayudanos a terminar el siguiente código.
+\begin{itemize}
+\item \textbf{Ejemplo}: Sea $a$ = \{3, 7, 11, 12, 23, 24, 27, 77, 178\} y $z$ = 45. La respuesta es 27. 
+\end{itemize}
+\begin{lstlisting}
+  int bus(int[]a,int iz,int de,int z){
+    if(iz>de){
+      return -1;      }  
+    if(a[de]>=z){
+      return a[de];   }
+    int mitad=(iz+de)/2;
+    if(a[mitad]==z){
+    return .........; }
+    if(mitad>0){
+      if(a[mitad-1]<=z && z<a[mitad]){
+        return mitad - 1;     }   }
+    if(z<a[mitad]){
+      return bus(a,iz,mitad-1,z); }
+    //else
+    return bus(...., ...., ...., ....);
+  }
+  public int bus(int[] a, int z) {
+     return bus(a, 0, a.length - 1, z);
+  }
+\end{lstlisting}
+\begin{enumerate}[label=(\alph*)]
+\item (10\%) ¿Cuál es la complejidad asintótica, en el peor de los casos, del algoritmo anterior?
+\begin{enumerate}[label=(\roman*)]
+\item $T(n) = 2.T(n/2) + C$ que es $O(n)$
+\item $T(n) = 2.T(n/2) +Cn$ que es $O(n\times\log n)$
+\item $T(n) = T(n/2) + C$ que es $O(\log n)$
+\item $T(n) = 4.T(n/2) + C$ que es $O(n^2)$
+\end{enumerate}
+\item (10\%) Complete la línea 8 ..........
+\item (10\%) Complete la línea 15 ...., ...., ...., ....
+\end{enumerate}
+
+\section{Programación Dinámica 40\%}
+Dado un conjunto de enteros $a = a_1, a_2, ... , a_n$, queremos encontrar su \textbf{subsecuencia creciente máxima}. La subsecuencia creciente máxima de una secuencia, es una subsecuencia de esta secuencia cuyos elementos están ordenados y esta subsecuencia es tan larga como sea posible. Los elementos de esta subsecuencia no necesariamente tienen que ser contiguos en la secuencia original. Este problema tiene aplicaciones en bioinformática para analisis de nicho ecológico y para filogenética. 
+\textbf{Nota:} En la otra página hay algunos ejemplos.
+
+En este problema estamos interesados en encontrar el tamaño de la subsecuencia creciente máxima. La ecuación recursiva está definida de esta forma:
+$$
+scm(i)= \left\{ \begin{array}{ll}
+             1 + max( scm(j) ) & \text{donde} \ 0 < j < i \text{ y } a_j < a_i \\
+             1 & \text{si no existe tal valor } j
+             \end{array}
+   \right.
+$$   
+
+
+El siguiente código hace el trabajo, utilizando programación dinámica, pero faltan algunas líneas, complétalas por favor.
+\begin{lstlisting}
+int scm(int arr[]) {
+  int n = arr.length;
+  int scm[] = new int[n];
+  int i,j,max = 0;
+  /* Inicializar la tabla scm */
+  for ( i = 0; i < n; i++ ) {
+      ...........; }
+  /* Calcular usando la tabla scm*/
+  for ( i = 1; i < n; i++ ) {
+      for ( j = 0; j < i; j++ ) {
+        if ( arr[i] > arr[j] && scm[i] < scm[j] + 1) {
+          ...........; } } }
+  /* El maximo en la tabla scm */
+  for ( i = 0; i < n; i++ ) {
+      if ( max < scm[i] ) {
+         ...........;  } }
+  return max;
+}
+\end{lstlisting}
+
+Veamos los siguientes \textbf{ejemplos} para que lo entendamos mejor.
+
+\begin{itemize}
+	\item \textbf{Ejemplo 1: } Sea $a$ = \{7, 4, 8, 1, 3, 9, 2, 6, 10\}.  La subsecuencia creciente máxima es \textbf{\{1, 2, 6, 10\}}. Nota que \textbf{\{1, 3, 6, 10\}} es otra subsecuencia creciente máxima. En todo caso, la longitud de la secuencia creciente máxima es 4.
+
+	\item \textbf{Ejemplo 2: } Sea $a$ = \{4, 2, 1, 9, 3, 4, 10, 2, 1\}. La subsecuencia creciente máxima es \textbf{\{1, 3, 4, 10\}}. La longitud de la secuencia creciente máxima es 4.
+\end{itemize}
+
+\begin{enumerate}[label=(\alph*)]
+\item (10\%) Complete la línea 7  ...........
+\item (10\%) Complete la línea 12 ...........
+\item (10\%) Complete la línea 16 ...........
+\item (10\%) ¿Cuál es la complejidad asintótica, en el peor de los casos, del método anterior?
+\begin{enumerate}[label=(\roman*)]
+\item $O(1)$
+\item $O(n)$
+\item $O(n^2)$
+\item $O(n \log n)$
+\end{enumerate}
+\end{enumerate}
+\section{Programación Dinámica 30\%}
+El \textbf{algoritmo de Floyd-Warshall} encuentra la distancia mínima entre cada par de vértices $i, j$ de un grafo con pesos. Este algoritmo  muchas veces es usado para determinar la clausura transitiva de un grafo, que es útil en Lenguajes Formales y Compiladores. Dada la representación usando \textbf{matrices de adyacencia} $g$ de un grafo, donde la posición $i, j$ de la matriz es $\infty$ si el vértice $i$ no está conectado con el vértice $j$ o la posición $i, j$ es un entero $a_{i, j}$ si existe una conexión entre el vértice $i$ y $j$, queremos encontrar la distancia mínima entre el vértice $u$ y el vértice $v$. Ayúdanos a completar el siguiente código:
+\begin{lstlisting}
+int calcular(int[][]g,int u,int v){
+  int n = g.length;
+  int[][] d = new int[n][n];
+  for(int i = 0; i < n; ++i){
+	for(int j = 0; j < n; ++j){
+	  d[i][j] = g[i][j];	
+	}   
+  }
+  for(int k = 0; k < n; ++k){
+	for(int i = 0; i < n; ++i){
+	  for(int j = 0; j < n; ++j){
+	    int ni = .......;
+	    int nj = .......;
+	    int nk = .......;
+	    int res = Math.min(ni, nj + nk);
+	    d[i][j] = res;
+	  }	
+	}  
+  }
+  return d[u][v];
+}
+\end{lstlisting}
+\begin{enumerate}[label=(\alph*)]
+\item (10\%) Completa la línea 12 .......
+\item (10\%) Completa la línea 13 .......
+\item (10\%) Completa la línea 14 .......
+\item (10\% OPCIONAL) ¿Cuál es la complejidad asintótica, en el peor de los casos, del algoritmo anterior? .......
+\end{enumerate}
+
+
+\end{multicols}
+
+\end{document}

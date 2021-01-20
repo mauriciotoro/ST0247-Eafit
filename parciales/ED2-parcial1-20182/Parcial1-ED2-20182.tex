@@ -1,0 +1,211 @@
+\documentclass[10 pt]{article}
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usepackage[margin=0.5 in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{tabu}
+\usepackage{color}
+\usepackage{amsmath}
+\usepackage{verbatimbox}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{enumitem}
+\usepackage{fancyvrb}
+\usepackage{multicol}
+\setlength{\columnsep}{1cm} 
+\title{\textbf {Estructuras de Datos 2 - ST0247\\Examen Parcial 1}}
+\author{Nombre ..............................\\
+		Departamento de Informática y Sistemas\\
+		Universidad EAFIT\\}
+\date{Septiembre 13 de 2018}
+\begin{document}
+\lstdefinestyle{customc}{
+	language=Java, 
+	numbers=left, 
+	showspaces=false,
+    showstringspaces=false, 
+    tabsize=2, 
+    breaklines=true,
+    xleftmargin=5.0ex,
+}
+\lstset{escapechar=@,style=customc, numbers=left, stepnumber = 1} 
+\maketitle
+\begin{multicols}{2}
+\section{Voraces 20\%}
+Durante la clase de Estructuras de Datos 2, el profesor propuso el siguiente problema para que se resolviera en parejas. Te daban $n$ números $\{x_1,x_2,x_3,...,x_n\}$ y un entero $k, k\leq n$. La tarea era encontrar un subconjunto de exactamente $k$ números cuya suma fuera mínima. Sin embargo, para que el problema fuera más entretenido, el profesor prometió un bonus a la pareja que escribiera un algoritmo con una complejidad no superior a $O(n\log n)$. Para esto, las parejas 1 y 2 propusieron lo siguiente, respectivamente:
+\begin{enumerate}
+	\item Es imposible encontrar un algoritmo que funcione en complejidad $O(n \log n)$ o inferior  porque es necesario intentar cada subconjunto de $k$ números para determinar cual de estos tiene suma mínima.
+	\item Es posible encontrar un algoritmo que funcione con complejidad $O(n \log n)$ o inferior porque, si ordenamos los elementos de una manera especifica, no es necesario intentar todos los posibles subconjuntos de $k$ elementos.
+\end{enumerate} 
+\begin{enumerate}[label=\alph*)]
+\item (10\%) Escoja la respuesta correcta:
+\begin{enumerate}[label=\roman*)]
+	% Respuesta: d
+	\item La pareja 1 tiene la razón, pero su justificación es falsa.
+	\item La pareja 1 tiene la razón y su justificación es verdadera.
+	\item La pareja 2 tiene la razón, pero su justificación es falsa.
+	\item La pareja 2 tiene la razon y su justificación es verdadera.
+\end{enumerate}
+\item (10\%) Describa en pocas líneas el algoritmo que usted plantea para el problema anterior. Explique la complejidad de su algoritmo. 
+\noindent\rule{9cm}{0.05pt}
+\noindent\rule{9cm}{0.05pt}
+\noindent\rule{9cm}{0.05pt}
+\noindent\rule{9cm}{0.05pt}
+\noindent\rule{9cm}{0.05pt}
+\noindent\rule{9cm}{0.05pt}
+\noindent\rule{9cm}{0.05pt}
+\end{enumerate}
+\section{Fuerza Bruta 20\%}
+
+Considere el siguiente problema. Tenemos un arreglo de $n$ números no negativos $\{x_1,x_2,x_3, ..., x_n\}$. Queremos determinar si es posible encontrar un $i, 0 \leq i < n$ de tal manera que 
+$\sum\limits_{j=0}^{i} x_j = \sum\limits_{j=i+1}^{n} x_j$. Ayúdanos a resolver este problema. Como un ejemplo, para $x = \{3,4,7,1,8,1,1,2,2,1\}$, la respuesta es verdadero y el $i=3$.
+\begin{lstlisting}
+boolean sol(int[] x){
+  boolean can = false;
+  int left, right;
+  right=left=0;
+  int n=x.length;
+  for(int i=0; i<n; i++){
+    left = left+x[i];
+    for(int j=......; j<n; j++){
+      right = right+x[j];
+    }
+    can = can || (.................);
+    right = 0;
+  }
+  return can;
+}
+\end{lstlisting}
+\begin{enumerate}[label=\alph*)]
+	%Respuesta: i+1
+	\item (10\%) Complete la línea 7 ...........
+	%Respuesta: left == right
+	\item (10\%) Complete la línea 10 ..........  
+\end{enumerate}
+\section{Backtracking 30\%}
+
+El problema de la \textbf{subsecuencia común más larga} es el siguiente. Dadas dos secuencias, encontrar la longitud de la secuencia más larga presente en ambas.
+Una subsecuencia es una secuencia que aparece en el mismo orden relativo, pero --no necesariamente-- de forma contigua. Como un ejemplo, ``abc'', ``abg'', ``bdf'',
+``aeg'' y ``acefg'' son subsecuencias de ``abcdefg''. Entonces, para una cadena de longitud $n$, existen $2^n$ posibles subsecuencias. Este problema es utilizado
+en la implementación del comando \texttt{diff}, para comparación de archivos, disponible en sistemas Unix.  También tiene muchas aplicaciones en bioinformática. \\
+
+\noindent
+Considere los siguientes ejemplos para el problema:
+\begin{itemize}
+\item Para ``ABCDGH'' y ``AEDFHR'' es ``ADH'' y su longitud es 3. Se retornaría 3.
+\item Para ``AGGTAB'' y ``GXTXAYB'' es ``GTAB'' y su longitud es 4. Se retornaría 4.\\
+\end{itemize}
+
+Una forma de resolver este problema es usando \emph{backtracking}, como un ejemplo, para las cadenas  ``AXYT'' y  ``AYZX'', dada una función recursiva \texttt{lcs} 
+que resuelve el problema, se obtendría el siguiente árbol (parcial) de recursión:
+
+{\scriptsize
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`$=3\catcode`_=8}]
+                 lcs("AXYT", "AYZX")
+                 /                 \textbackslash
+    lcs("AXY", "AYZX")            lcs("AXYT", "AYZ")
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+    lcs("AXY", "AYZX")          
+      /            \textbackslash               
+lcs("AX", "AYZX") \textbf{lcs("AXY", "AYZ")}
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+    lcs("AXYT", "AYZ")
+     /             \textbackslash
+\textbf{lcs("AXY", "AYZ")} lcs("AXYT", "AY")
+\end{Verbatim}
+}
+
+
+
+Al siguiente código le faltan algunas lineas, complétalas por favor.
+
+{\footnotesize
+\begin{lstlisting}
+int lcs(int i, int j, String s1, String s2){
+ if(i == 0 || j == 0){
+   return 0;   
+ }
+ boolean prev = i < s1.length() && j < s2.length();
+ if(prev && s1.charAt(i) == s2.charAt(j)){
+     return 1 + lcs(______, _______, s1, s2);
+ }
+ int ni = lcs(i - 1, j, s1, s2);
+ int nj = lcs(i, j - 1, s1, s2);
+ return Math.max(_____, _____);
+}
+public int lcs(String s1, String s2){
+ return lcs(s1.length(), s2.length(), s1, s2);
+}
+\end{lstlisting}
+}
+\begin{enumerate}[label=\alph*)]
+% i-1, j-1
+ \item (10\%) Linea 7  \_\_\_\_\_\_\_\_\_\_\_\_, \_\_\_\_\_\_\_\_\_\_\_\_ \\
+% ni + nj
+ \item (10\%) Linea 11 \_\_\_\_\_\_\_\_\_\_\_\_, \_\_\_\_\_\_\_\_\_\_\_\_ \\
+% O(2^n)
+ \item (10\%) Suponga que $n$ es la suma de la longitud de las dos cadenas. El algoritmo \texttt{lcs} ejecuta, en el
+ peor de los casos, $T(n)$ = \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ instrucciones. \\
+\end{enumerate}
+
+\textbf{Nota:} En la complejidad pueden poner la ecuación de recurrencia o la solución a la ecuación de recurrencia aplicando la notación O.
+
+\section{Backtracking 30\%}
+El problema de las $N$ reinas consiste en tomar un tablero de ajedrez de $N\times N$ y ubicar $N$ reinas de tal manera que ninguna reina quede amenazada. Una posible solución para $N=8$ sería:
+\[
+\begin{bmatrix}
+0 & 0 & 0 & * & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 & * & 0 \\
+0 & 0 & * & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 & 0 & * \\
+0 & * & 0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & * & 0 & 0 & 0 \\
+* & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & * & 0 & 0
+\end{bmatrix}
+\]
+\[
+solucion=\{4,7,3,8,2,5,1,6\}\ (columnas)
+\]
+Ayúdanos a resolver el problema anterior. La solución consiste en entregar un arreglo $a$ donde $a_i$ es un entero que indica la columna de la fila $i$ donde hay una reina.
+
+\begin{lstlisting}
+void sol(int[] a, int r) {
+  int N = a.length;
+  if (...........) {
+    print(Arrays.toString(a));
+    return;
+  }
+  for (int i = 0; i < N; ++i) {
+    a[r]= ........;
+    if(place(a,r)) sol(a, .......);
+  }
+}
+boolean place(int[]a,int r){
+  for(int i=0;i<r;++i){
+    if(a[i]==a[r]) return false;
+    if((a[i]-a[r]) == (r-i)) return false;
+    if((a[r]-a[i]) == (r-i)) return false;
+  }
+  return true;
+}
+void print(int[]a){
+  int n=a.length;
+  System.out.print("[");
+  for(int i=0;i<n-1;i++){
+    System.out.print(a[i]+",");
+  }
+  System.out.println(a[n-1] +"]");
+}
+\end{lstlisting}
+\begin{enumerate}[label=\alph*)]
+	% Respuesta: r == N
+	\item (10\%) Complete la línea 3 ..............
+	% Respuesta: a[r] = i
+	\item (10\%) Complete la línea 8 ..............
+	% Respuesta: r + 1
+	\item (10\%) Complete la línea 9 ..............
+\end{enumerate}
+\end{multicols}
+
+\end{document}

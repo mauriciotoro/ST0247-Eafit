@@ -1,0 +1,33 @@
+1. GRafo con matrices y con listas
+
+2. Recorridos DFS y BFS
+
+3.
+
+A) if (actual > maximo)
+B) es O(n^2)
+
+4. 
+
+% 01 boolean cicloHamil(int graph[][], 
+%                    int path[], int pos) {  
+% 02        if (pos == graph.lenth){     
+% 03            if (graph[path[pos - 1]][path[0]] == 1)
+% 04                return true;
+% 05            else
+% 06                return false;
+% 07        }
+% 08        for (int v = 1; v < graph.lenth; v++) {        
+% 09            if (sePuede(v, graph, path, pos)) {
+% 10                path[pos] = v;
+% 11                if (cicloHamil(graph, path, pos + 1))
+% 12                    return true;
+% 13                path[pos] = -1;
+% 14            }
+% 15        }
+% 16        return false;
+% 17 }
+
+5. 
+
+% i = j

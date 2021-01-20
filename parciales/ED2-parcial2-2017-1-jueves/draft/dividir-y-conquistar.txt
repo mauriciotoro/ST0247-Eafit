@@ -1,0 +1,69 @@
+\section{Recursión 40\%}
+Hoy es el último día de Dayla y Kefo en el Colegio y hoy presentan su último examen de Matemáticas. Casi todos los puntos son simples excepto por uno. Supongamos que nos entregan una función $f(x)$ \textit{unimodal} en un intervalo $I: [l, r]$. Una función unimodal es aquella que siempre es creciente hasta un punto y luego decreciente (o viceversa). La idea es encontrar el mínimo  de esa función en el intervalo $I$. 
+
+Dayla y Kefo aprovecharon y utilizaron su código de \textit{ternary search} para determinar el máximo. \textit{Ternary search} determina si el máximo no se puede encontrar en el primer tercio del intervalo o si no se puede encontrar en el último tercio
+del intervalo, luego repite el proceso en los dos tercios que no fueron descartados. Desafortunadamente, ambos se dieron cuenta que su código no andaba bien y te lo entregan a ti para que lo corrijas. En el examen, la función que les entregaron fue $f(x) = 2 \times x \times x + 7 - 12 \times x$.
+
+\textbf{Pista: } Como la función $f(x)$ es \textit{unimodal}, si tomamos dos puntos $m_1$ y $m_2$ en el intervalo: $l < m_1 < m_2 < r$, entonces hay 3 posibilidades
+
+\begin{enumerate}
+\item Si $f(m_1) < f(m_2)$, entonces el máximo no está en el tercio de la izquierda, sino en los otros dos tercios.
+\item Si $f(m_1) > f(m_2)$, entonces el máximo no está en el tercio de la derecha, sino en los otros dos tercios.
+\item Si $f(m_1) = f(m_2)$, entonces el máximo es $m_1$.
+\end{enumerate}
+
+\textbf{Pista 2: } choice points m1 and m2:
+
+\begin{itemize}
+\item $m1 = l + (r-l)/3$
+\item $m2 = r - (r-l)/3$
+\end{itemize}
+
+\begin{verbatim}
+int f(int x)
+    return 2 * x * x + 7 - 12 * x;
+
+double buscarMax(int left, int right)
+    if (Math.abs(right - left) < 0.001)
+        return (left + right)/2
+
+    leftThird = (2*left + right)/3
+    rightThird = (left + 2*right)/3
+
+    if (f(leftThird) < f(rightThird))
+        return ternarySearch(leftThird, right) 
+    else
+        return ternarySearch(left, rightThird)	
+\end{verbatim}
+
+\noindent
+4.1 (20\%) ¿Cómo se soluciona el error en el código de Dayla y Kefo?
+
+\begin{enumerate}[label=\Alph*]
+\item El error se soluciona cambiando \texttt{ l1 = (l*3+r )/2} por 
+\texttt{ l1 = (l * 2 + r) / 2}
+\item El error se soluciona cambiando \texttt{ l2 = (l+2*r)/3} por
+\texttt{ l1 = (l+3+r)/3}
+\item El error se soluciona cambiando \texttt{ l1 = (l*3+r )/2} por
+\texttt{ l1 = (l+3+r)/2}\\
+\end{enumerate} 
+
+% A. double l1 = (l*3+r )/2; por double l1 = (l * 2 + r) / 2;
+
+\noindent
+4.2 (20\%) Además de corregir el error anterior, ¿qué más se debe modificar para calcular el mínimo de la función?
+
+\begin{enumerate}[label=\Alph*]
+\item Se cambia \texttt{if(f(l1) > f(l2))} por \texttt{if(f(l1) < f(l2))}
+\item Se cambia \texttt{if(f(l1) > f(l2))} por \texttt{if(f(l1) <= f(l2))}
+\item Se cambia \texttt{if(f(l1) > f(l2))} por \texttt{if(f(l1) == f(l2))}
+\item Se cambia \texttt{f(l)} por \texttt{-1*f(l)}
+\end{enumerate}
+
+%A, se cambia > por <.
+
+% \section*{Firma}
+% {\footnotesize 
+% Al firmar afirmo que lo que entrego en este examen es fruto de mi trabajo individual.
+% No he recibido ayuda indebida de parte de otra persona. 
+% \\

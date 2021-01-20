@@ -1,0 +1,15 @@
+1 a. i - m;
+1 b. O(n * m)
+
+2
+
+3
+
+4
+
+ a. isSafeToGo(maze, x, y, N)
+  b. maze, x, y-1, N, "left"
+  c. false
+
+5.
+  a Respuesta: Arrays.sort(a), Arrays.sort(b)
